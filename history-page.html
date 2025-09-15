@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Manager Pro - Trang Đầy Đủ</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen p-6">
+    <div class="container mx-auto max-w-4xl">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6">
+            <h1 id="title" class="text-3xl font-bold">History Manager Pro</h1>
+            <div class="flex space-x-2">
+                <!-- Settings Dropdown -->
+                <div class="relative">
+                    <button id="settingsToggle" class="p-2 bg-green-600 text-white rounded hover:bg-green-700">Cài
+                        Đặt</button>
+                    <div id="settingsDropdown"
+                        class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 z-10">
+                        <div class="mb-3">
+                            <label class="block text-sm font-medium mb-1" id="langLabel">Ngôn ngữ / Language</label>
+                            <select id="langSelect"
+                                class="w-full p-2 border rounded dark:border-gray-600 dark:bg-gray-700">
+                                <option value="vi">Tiếng Việt</option>
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                        <button id="themeToggle" class="w-full p-2 bg-gray-200 dark:bg-gray-700 rounded">Chuyển
+                            sáng/tối</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="mb-6">
+            <button id="historyTab" class="tab-btn bg-blue-500 text-white px-6 py-3 rounded-l">Lịch sử</button>
+            <button id="tabsTab" class="tab-btn bg-gray-300 dark:bg-gray-600 px-6 py-3 rounded-r">Tabs Thiết bị
+                Khác</button>
+        </div>
+
+        <!-- History Section -->
+        <div id="historySection" class="section active">
+            <!-- Toolbar -->
+            <div class="flex flex-col space-y-3 mb-6">
+                <input id="searchInput" type="text" placeholder="Tìm kiếm lịch sử..."
+                    class="p-3 rounded border dark:border-gray-600 dark:bg-gray-800">
+                <div class="flex space-x-3 flex-wrap">
+                    <input id="datePicker" type="date" class="p-3 rounded border dark:border-gray-600 dark:bg-gray-800">
+                    <button id="clearDate" class="filter-btn bg-gray-500 text-white px-4 py-2 rounded">Tất cả</button>
+                    <button id="filterDay" class="filter-btn bg-green-500 text-white px-4 py-2 rounded">Nhóm theo
+                        Ngày</button>
+                    <button id="filterSite" class="filter-btn bg-purple-500 text-white px-4 py-2 rounded">Nhóm theo
+                        Trang Web</button>
+                    <button id="selectAll" class="filter-btn bg-yellow-500 text-white px-4 py-2 rounded">Chọn Tất
+                        Cả</button>
+                    <button id="deleteSelected" class="filter-btn bg-red-500 text-white px-4 py-2 rounded">Xóa Đã
+                        Chọn</button>
+                    <button id="deleteDay" class="filter-btn bg-red-600 text-white px-4 py-2 rounded">Xóa Ngày
+                        Này</button>
+                    <button id="exportCSV" class="filter-btn bg-indigo-500 text-white px-4 py-2 rounded">CSV</button>
+                    <button id="exportJSON" class="filter-btn bg-indigo-500 text-white px-4 py-2 rounded">JSON</button>
+                    <button id="exportHTML" class="filter-btn bg-indigo-500 text-white px-4 py-2 rounded">HTML</button>
+                </div>
+            </div>
+            <!-- History List -->
+            <div id="historyList" class="space-y-3"></div>
+        </div>
+
+        <!-- Tabs Sync Section -->
+        <div id="tabsSection" class="section hidden">
+            <div id="tabsList" class="space-y-3"></div>
+        </div>
+    </div>
+
+    <script type="module" src="history-page.js"></script>
+</body>
+
+</html>

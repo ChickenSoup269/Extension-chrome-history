@@ -1,0 +1,100 @@
+/* Dark mode base */
+.dark .bg-gray-100 {
+  background-color: #f3f4f6;
+}
+.dark .text-gray-900 {
+  color: #111827;
+}
+
+/* Tab buttons */
+.tab-btn {
+  transition: all 0.3s ease;
+}
+.tab-btn:hover {
+  transform: translateY(-1px);
+}
+.active {
+  display: block !important;
+}
+.hidden {
+  display: none !important;
+}
+
+/* Filter buttons */
+.filter-btn {
+  transition: all 0.2s;
+}
+.filter-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* History item */
+.history-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  background: white;
+  dark: bg-gray-800;
+  transition: all 0.2s;
+}
+.history-item:hover {
+  background: #f0f0f0;
+  dark: bg-gray-700;
+}
+.history-item.selected {
+  background: #dbeafe;
+  dark: bg-gray-600;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Favicon */
+.favicon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+/* Date picker and search */
+#datePicker,
+#searchInput {
+  transition: all 0.2s;
+}
+#datePicker:hover,
+#searchInput:hover {
+  border-color: #3b82f6;
+}
+
+/* Settings dropdown */
+#settingsDropdown {
+  transition: all 0.2s;
+}
+#settingsDropdown select,
+#settingsDropdown button {
+  transition: all 0.2s;
+}
+#settingsDropdown select:hover,
+#settingsDropdown button:hover {
+  border-color: #3b82f6;
+}
+
+/* Animation fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.history-item,
+#settingsDropdown {
+  animation: fadeIn 0.3s ease;
+}
