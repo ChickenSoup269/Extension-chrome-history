@@ -52,21 +52,58 @@
                 <input id="searchInput" type="text" placeholder="Tìm kiếm lịch sử..."
                     class="p-2 rounded border dark:border-gray-600 dark:bg-gray-800">
                 <div class="flex space-x-2 flex-wrap">
-                    <input id="datePicker" type="date" class="p-2 rounded border dark:border-gray-600 dark:bg-gray-800">
+                    <input id="datePicker" type="date" max="2025-09-16"
+                        class="p-2 rounded border dark:border-gray-600 dark:bg-gray-800">
                     <button id="clearDate" class="filter-btn bg-gray-500 text-white px-3 py-1 rounded">Tất cả</button>
-                    <button id="filterDay" class="filter-btn bg-green-500 text-white px-3 py-1 rounded">Nhóm theo
-                        Ngày</button>
-                    <button id="filterSite" class="filter-btn bg-purple-500 text-white px-3 py-1 rounded">Nhóm theo
-                        Trang Web</button>
+                    <!-- Filter Dropdown -->
+                    <div class="relative">
+                        <button id="filterToggle"
+                            class="filter-btn bg-green-500 text-white px-3 py-1 rounded">Nhóm</button>
+                        <div id="filterDropdown"
+                            class="hidden absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 z-10">
+                            <button id="filterDay"
+                                class="w-full text-left p-2 hover:bg-gray-200 dark:hover:bg-gray-700">Nhóm theo
+                                Ngày</button>
+                            <button id="filterHour"
+                                class="w-full text-left p-2 hover:bg-gray-200 dark:hover:bg-gray-700">Nhóm theo
+                                Giờ</button>
+                            <button id="filterSite"
+                                class="w-full text-left p-2 hover:bg-gray-200 dark:hover:bg-gray-700">Nhóm theo Trang
+                                Web</button>
+                        </div>
+                    </div>
                     <button id="selectAll" class="filter-btn bg-yellow-500 text-white px-3 py-1 rounded">Chọn Tất
                         Cả</button>
                     <button id="deleteSelected" class="filter-btn bg-red-500 text-white px-3 py-1 rounded">Xóa Đã
                         Chọn</button>
                     <button id="deleteDay" class="filter-btn bg-red-600 text-white px-3 py-1 rounded">Xóa Ngày
                         Này</button>
-                    <button id="exportCSV" class="filter-btn bg-indigo-500 text-white px-3 py-1 rounded">CSV</button>
-                    <button id="exportJSON" class="filter-btn bg-indigo-500 text-white px-3 py-1 rounded">JSON</button>
-                    <button id="exportHTML" class="filter-btn bg-indigo-500 text-white px-3 py-1 rounded">HTML</button>
+                    <!-- Export Dropdown -->
+                    <div class="relative">
+                        <button id="exportToggle"
+                            class="filter-btn bg-indigo-500 text-white px-3 py-1 rounded">Xuất</button>
+                        <div id="exportDropdown"
+                            class="hidden absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 z-10">
+                            <button id="exportCSVSelected"
+                                class="w-full text-left p-2 hover:bg-gray-200 dark:hover:bg-gray-700">CSV (Ngày đã
+                                chọn)</button>
+                            <button id="exportCSVAll"
+                                class="w-full text-left p-2 hover:bg-gray-200 dark:hover:bg-gray-700">CSV (Tất
+                                cả)</button>
+                            <button id="exportJSONSelected"
+                                class="w-full text-left p-2 hover:bg-gray-200 dark:hover:bg-gray-700">JSON (Ngày đã
+                                chọn)</button>
+                            <button id="exportJSONAll"
+                                class="w-full text-left p-2 hover:bg-gray-200 dark:hover:bg-gray-700">JSON (Tất
+                                cả)</button>
+                            <button id="exportHTMLSelected"
+                                class="w-full text-left p-2 hover:bg-gray-200 dark:hover:bg-gray-700">HTML (Ngày đã
+                                chọn)</button>
+                            <button id="exportHTMLAll"
+                                class="w-full text-left p-2 hover:bg-gray-200 dark:hover:bg-gray-700">HTML (Tất
+                                cả)</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- History List -->

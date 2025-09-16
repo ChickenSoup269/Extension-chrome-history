@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "History Manager Pro",
-  "version": "1.6",
+  "version": "1.5",
   "description": "Quản lý lịch sử duyệt web với UI đẹp, nhóm theo ngày/trang web, xóa hàng loạt, tabs từ thiết bị khác, favicon, lịch chọn ngày, tìm kiếm, cài đặt dropdown, export, xóa ngày.",
   "permissions": [
     "history",
@@ -17,7 +17,6 @@
   "background": {
     "service_worker": "background.js"
   },
-
   "web_accessible_resources": [
     {
       "resources": [

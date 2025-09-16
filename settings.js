@@ -1,11 +1,13 @@
 const texts = {
   vi: {
+    lang: "vi",
     title: "History Manager Pro",
     historyTab: "Lịch sử",
     tabsTab: "Tabs Thiết bị Khác",
     searchPlaceholder: "Tìm kiếm lịch sử...",
     all: "Tất cả",
     groupByDay: "Nhóm theo Ngày",
+    groupByHour: "Nhóm theo Giờ",
     groupBySite: "Nhóm theo Trang Web",
     selectAll: "Chọn Tất Cả",
     deleteSelected: "Xóa Đã Chọn",
@@ -24,12 +26,14 @@ const texts = {
     themeLabel: "Chuyển sáng/tối",
   },
   en: {
+    lang: "en",
     title: "History Manager Pro",
     historyTab: "History",
     tabsTab: "Tabs Other Devices",
     searchPlaceholder: "Search history...",
     all: "All",
     groupByDay: "Group by Day",
+    groupByHour: "Group by Hour",
     groupBySite: "Group by Site",
     selectAll: "Select All",
     deleteSelected: "Delete Selected",
@@ -58,24 +62,45 @@ export function updateTexts(currentLang = "vi") {
     currentTexts.searchPlaceholder
   document.getElementById("clearDate").textContent = currentTexts.all
   document.getElementById("filterDay").textContent = currentTexts.groupByDay
+  document.getElementById("filterHour").textContent = currentTexts.groupByHour
   document.getElementById("filterSite").textContent = currentTexts.groupBySite
   document.getElementById("selectAll").textContent = currentTexts.selectAll
   document.getElementById("deleteSelected").textContent =
     currentTexts.deleteSelected
   document.getElementById("deleteDay").textContent = currentTexts.deleteDay
-  document.getElementById("exportCSV").textContent = currentTexts.exportCSV
-  document.getElementById("exportJSON").textContent = currentTexts.exportJSON
-  document.getElementById("exportHTML").textContent = currentTexts.exportHTML
+  document.getElementById(
+    "exportCSVSelected"
+  ).textContent = `${currentTexts.exportCSV} (Ngày đã chọn)`
+  document.getElementById(
+    "exportCSVAll"
+  ).textContent = `${currentTexts.exportCSV} (Tất cả)`
+  document.getElementById(
+    "exportJSONSelected"
+  ).textContent = `${currentTexts.exportJSON} (Ngày đã chọn)`
+  document.getElementById(
+    "exportJSONAll"
+  ).textContent = `${currentTexts.exportJSON} (Tất cả)`
+  document.getElementById(
+    "exportHTMLSelected"
+  ).textContent = `${currentTexts.exportHTML} (Ngày đã chọn)`
+  document.getElementById(
+    "exportHTMLAll"
+  ).textContent = `${currentTexts.exportHTML} (Tất cả)`
   document.getElementById("settingsToggle").textContent = currentTexts.settings
   document.getElementById("langLabel").textContent = currentTexts.langLabel
   document.getElementById("themeToggle").textContent = currentTexts.themeLabel
   return currentTexts
 }
 
-export async function initSettings(updateTextsCallback, reloadCallback) {
+export function initSettings(
+  updateTextsCallback,
+  reloadCallback,
+  { currentFilter, selectedItems, selectedDate, searchQuery, maxResults }
+) {
   return new Promise((resolve) => {
+    let currentLang = "vi"
     chrome.storage.sync.get(["lang", "darkMode"], (result) => {
-      let currentLang = result.lang || "vi"
+      if (result.lang) currentLang = result.lang
       const currentTexts = updateTextsCallback(currentLang)
       if (result.darkMode) {
         document.body.classList.add("dark")
@@ -128,8 +153,7 @@ export async function initSettings(updateTextsCallback, reloadCallback) {
         })
       })
 
-      document.getElementById("langSelect").value = currentLang
-      resolve(currentLang)
+      resolve(currentTexts)
     })
   })
 }
